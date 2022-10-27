@@ -9,7 +9,7 @@ document.querySelector('.loginForm').addEventListener('submit',async(e)=>{
             email:e.target.email.value,
             password:e.target.password.value
         });
-        // localStorage.setItem('token',res.data.token);
+        localStorage.setItem('token',res.data.token);
         console.log(res);
         alert(res.data.message);
         // window.location.href='./expenses.html';
