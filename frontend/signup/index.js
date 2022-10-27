@@ -14,6 +14,7 @@ document.querySelector('.signupForm').addEventListener('submit',(async(e)=>{
         });
         console.log('res:', res);
         alert(res.data.message);
+        window.location.href='../login/index.html';
     }
     catch(err){
         console.log(err);
