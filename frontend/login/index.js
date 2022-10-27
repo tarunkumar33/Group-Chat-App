@@ -12,7 +12,7 @@ document.querySelector('.loginForm').addEventListener('submit',async(e)=>{
         localStorage.setItem('token',res.data.token);
         console.log(res);
         alert(res.data.message);
-        // window.location.href='./expenses.html';
+        window.location.href='../chat/index.html';
     }
     catch(err){
         console.log(err);
