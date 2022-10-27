@@ -13,9 +13,10 @@ document.querySelector('.signupForm').addEventListener('submit',(async(e)=>{
             password:e.target.password.value
         });
         console.log('res:', res);
+        alert(res.data.message);
     }
     catch(err){
         console.log(err);
-        document.body.innerHTML+=`<h1>${err.response.data.message}</h1>`;
+        document.body.innerHTML+=`<h1>${err}</h1>`;
     }
 }));

@@ -16,7 +16,7 @@ exports.signupUser=async (req,res,next)=>{
             return res.status(400).json({err:"Bad parameters, something is missing"});
         }
         if(await User.findOne({where:{email:email}})){
-            return res.status(400).json({success:false,message:"User Already Exists"});
+            return res.status(200).json({success:false,message:"User Already Exists, Please Login"});
         }
         const saltRounds=10;
         bcrypt.hash(password,saltRounds,async (err,hash)=>{
