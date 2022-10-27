@@ -6,7 +6,7 @@ const axiosObj=axios.create({
 document.querySelector('.signupForm').addEventListener('submit',(async(e)=>{
     try{
         e.preventDefault();
-        const res=await axiosObj.post('/user/signUp',{
+        const res=await axiosObj.post('/signUp',{
             name:e.target.name.value,
             email:e.target.email.value,
             phoneNumber:e.target.phoneNumber.value,

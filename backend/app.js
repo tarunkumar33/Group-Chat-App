@@ -5,14 +5,20 @@ const cors=require('cors');
 const bodyParser=require('body-parser');
 const sequelize=require('./utils/database');
 const userRoutes=require('./routes/user');
+const messageRoutes=require('./routes/message');
 
+const User=require('./models/user');
+const Message=require('./models/message');
 
 const app=express();
 app.use(cors({origin:['http://127.0.0.1:5500']}));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.json());
-app.use('/user',userRoutes);
+app.use(userRoutes);
+app.use(messageRoutes);
 
+User.hasMany(Message);
+Message.belongsTo(User);
 
 sequelize
     // .sync({force:true})

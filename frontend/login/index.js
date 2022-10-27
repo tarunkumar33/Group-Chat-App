@@ -5,7 +5,7 @@ const axiosObj=axios.create({
 document.querySelector('.loginForm').addEventListener('submit',async(e)=>{
     try{
         e.preventDefault();
-        const res=await axiosObj.post('/user/login',{
+        const res=await axiosObj.post('/login',{
             email:e.target.email.value,
             password:e.target.password.value
         });
