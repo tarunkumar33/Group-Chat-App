@@ -22,7 +22,7 @@ exports.loginUser = async (req, res, next) => {
             if (pwdmatch) {
                 // console.log("hi..........",result[0].id);
                 const token=jwt.sign(result[0].id, process.env.TOKEN_SECRET);
-                res.json({ success: true,message:'User Successfully Loggedin', token:token});
+                res.json({ success: true,message:'User Successfully Loggedin', token:token,loginName:result[0].name});
             }
             else {
                 console.log('password Incorrect');
@@ -31,6 +31,7 @@ exports.loginUser = async (req, res, next) => {
         }
     }
     catch (err) {
+        console.log('err:', err)
         res.status(500).json(err);
     }
 }

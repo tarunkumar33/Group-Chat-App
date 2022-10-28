@@ -11,5 +11,9 @@ module.exports = sequelize.define('message', {
     msg: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    userName: {
+        type: Sequelize.STRING,
+        allowNull: false
     }
 });
