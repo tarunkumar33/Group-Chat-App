@@ -3,20 +3,28 @@ const axiosObj = axios.create({
 });
 
 const token = localStorage.getItem('token');
+const localLoginName = localStorage.getItem('loginName');
+const msgsElem=document.querySelector('.messages');
+window.addEventListener('load',()=>{
+    console.log("Refreshed");
+    const localMsgs=JSON.parse(localStorage.getItem('messages')) || [];
+    msgsElem.innerHTML='';
+    if(localMsgs.length>0){
+        displayAllMsgs({messages:localMsgs,loginName:localLoginName});
+    }
+});
 
 function displayAllMsgs({messages,loginName}){
-    const msgsElem=document.querySelector('.messages');
-    msgsElem.innerHTML='';
     messages.forEach((msg)=>{
         if(msg.userName==loginName){
-            msgsElem.innerHTML+=`<div style="background:black;color:white; border-radius:25px; padding:5px; margin-right:80%">
+            msgsElem.innerHTML+=`<div style="background:black;color:white; border-radius:25px; padding:5px; margin:1px;margin-right:80%">
             <span >you : 
         </span>
             <span>${msg.msg}</span>
             </div>`;
         }
         else{
-            msgsElem.innerHTML+=`<div style="background:orange; color:white; border-radius:25px; padding:5px; margin-left:80%">
+            msgsElem.innerHTML+=`<div style="background:orange; color:white; border-radius:25px; padding:5px;margin:1px; margin-left:80%">
             <span  >${msg.userName} : 
         </span>
             <span>${msg.msg}</span>
@@ -26,8 +34,19 @@ function displayAllMsgs({messages,loginName}){
 }
 
 setInterval(async()=>{
-    const result=await axiosObj.get('/getMessages',{headers:{authorization:token}});
+    const localMsgs=JSON.parse(localStorage.getItem('messages')) || [];
+    console.log('localMsgs:', localMsgs)
+    let lastMsgId;
+    if(localMsgs.length>0){
+        lastMsgId=localMsgs[localMsgs.length-1].id;
+        console.log('lastMsgId:', lastMsgId)
+    }
+    const result=await axiosObj.get(`/getMessages?lastMsgId=${lastMsgId}`,{headers:{authorization:token}});
     console.log('result:', result);
+    
+    
+    localStorage.setItem('messages',JSON.stringify(localMsgs.concat(result.data.messages)));
+
     displayAllMsgs(result.data);
 
 },1000);

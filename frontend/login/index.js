@@ -10,6 +10,7 @@ document.querySelector('.loginForm').addEventListener('submit',async(e)=>{
             password:e.target.password.value
         });
         localStorage.setItem('token',res.data.token);
+        localStorage.setItem('loginName',res.data.loginName);
         console.log(res);
         alert(res.data.message);
         window.location.href='../chat/index.html';
