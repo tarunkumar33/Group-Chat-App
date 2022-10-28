@@ -9,14 +9,14 @@ function displayAllMsgs({messages,loginName}){
     msgsElem.innerHTML='';
     messages.forEach((msg)=>{
         if(msg.userName==loginName){
-            msgsElem.innerHTML+=`<div class="p-2 indimsg " style="background:black;border-bottom:1px dotted snow; color:snow; border-radius:7px; ">
-            <span style="margin-left:30%;" >you : 
+            msgsElem.innerHTML+=`<div style="background:black;color:white; border-radius:25px; padding:5px; margin-right:80%">
+            <span >you : 
         </span>
             <span>${msg.msg}</span>
             </div>`;
         }
         else{
-            msgsElem.innerHTML+=`<div class="p-2 indimsg " style="background:rgb(8, 87,87); color:snow; border-bottom:1px solid white; border-radius:6px; ">
+            msgsElem.innerHTML+=`<div style="background:orange; color:white; border-radius:25px; padding:5px; margin-left:80%">
             <span  >${msg.userName} : 
         </span>
             <span>${msg.msg}</span>
@@ -30,7 +30,7 @@ setInterval(async()=>{
     console.log('result:', result);
     displayAllMsgs(result.data);
 
-},800);
+},1000);
 
 
 document.querySelector('.sendmsgbtn').addEventListener('click',async()=>{
