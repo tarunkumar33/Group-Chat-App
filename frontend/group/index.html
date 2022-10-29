@@ -13,20 +13,20 @@
         <span>Login Name:</span>
         <span class="logname"></span>
     </header>
-    <nav style="background-color:darkgreen; padding: 20px;margin-bottom: 10px;">
+    <nav style="background-color:orange; padding: 20px;margin-bottom: 10px;">
         <ul style="display: flex; justify-content: space-around;">
-            <li><a href="#" style="font-weight: bold; color:snow;">Global Chat</a></li>
-            <li><a href="../group/index.html">Groups</a></li>
+            <li><a href="../chat/index.html">Global Chat</a></li>
+            <li><a href="#" style="font-weight: bold; color:snow;">Groups</a></li>
             <li><button id="logout">log Out</button></li>
         </ul>
     </nav>
+    
     <section class="container">
-        <div class="messages"></div>
+        <input type="text" id="grp-name">
+        <button class="create-grp-btn">Create Group</button>
     </section>
-    <section class="container">
-        <input type="text" id="msg">
-        <button class="sendmsgbtn">Send Message</button>
-    </section>
+    
+    <section class="group-list"></section>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="index.js"></script>

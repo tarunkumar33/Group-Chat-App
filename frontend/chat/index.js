@@ -2,9 +2,12 @@ const axiosObj = axios.create({
     baseURL: 'http://localhost:3000'
 });
 
+
+
 const token = localStorage.getItem('token');
 const localLoginName = localStorage.getItem('loginName');
 const msgsElem=document.querySelector('.messages');
+document.querySelector('.logname').innerHTML=localLoginName;
 window.addEventListener('load',()=>{
     console.log("Refreshed");
     const localMsgs=JSON.parse(localStorage.getItem('messages')) || [];
